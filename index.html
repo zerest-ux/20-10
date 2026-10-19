@@ -4,299 +4,521 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#fae8ed">
-<title>Một chút dịu dàng dành cho bạn 🌷</title>
+<meta name="theme-color" content="#fff0f4">
+<title>Gửi những người phụ nữ tuyệt vời | 20/10</title>
 <style>
-*{box-sizing:border-box}
-:root{--rose:#b83d5d;--pink:#f3a1b5;--cream:#fff9f4}
-body{
- margin:0;min-height:100vh;min-height:100dvh;
- font-family:Georgia,"Times New Roman",serif;color:#784553;
- background:radial-gradient(ellipse at 50% 20%,#fffdf8 0%,transparent 48%),
- linear-gradient(145deg,#f8dce5,#fff3ef 52%,#f4d8dd);
- overflow-x:hidden
+:root {
+  --rose:#b83e60;
+  --pink:#f5a5b9;
+  --cream:#fffaf4;
+  --gold:#d7ad70;
 }
-button{font:inherit;cursor:pointer}
-#sky{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.petal,.heart,.spark{
- position:absolute;pointer-events:none;will-change:transform,opacity
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  min-height:100vh;
+  min-height:100dvh;
+  overflow-x:hidden;
+  color:#754653;
+  font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(ellipse at 50% 20%,#fff 0,transparent 48%),
+    linear-gradient(145deg,#f9dce5,#fff6ef 52%,#f5dce4);
 }
-.petal{
- top:-35px;animation:fall linear forwards;
- filter:drop-shadow(0 3px 3px #b83d5d20)
+button { font:inherit; cursor:pointer; }
+#scene {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
 }
-@keyframes fall{
- 0%{transform:translate3d(0,-5vh,0) rotate(0);opacity:0}
- 10%{opacity:.8}
- 50%{transform:translate3d(var(--sway),48vh,0) rotate(260deg)}
- 100%{transform:translate3d(calc(var(--sway)*-.65),110vh,0) rotate(580deg);opacity:0}
+.petal,.heart,.sparkle {
+  position:absolute;
+  will-change:transform,opacity;
 }
-.heart{bottom:-35px;animation:rise linear forwards}
-@keyframes rise{
- 0%{transform:translateY(0) scale(.6) rotate(-10deg);opacity:0}
- 15%{opacity:.8}
- 100%{transform:translateY(-115vh) scale(1.25) rotate(25deg);opacity:0}
+.petal {
+  top:-35px;
+  animation:petalFall linear forwards;
 }
-.spark{animation:twinkle 2.2s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.35)}}
-.ambient{
- position:fixed;width:240px;height:240px;border-radius:50%;
- background:#eeb4c9;filter:blur(75px);opacity:.3;pointer-events:none
+@keyframes petalFall {
+  0% { transform:translate(0,-5vh) rotate(0);opacity:0 }
+  12% { opacity:.9 }
+  50% { transform:translate(var(--drift),50vh) rotate(220deg) }
+  100% { transform:translate(calc(var(--drift)*-.7),110vh) rotate(550deg);opacity:0 }
 }
-.a{top:4%;left:-120px}.b{bottom:3%;right:-130px;background:#e6b783}
-#intro{
- position:fixed;inset:0;z-index:10;display:grid;place-items:center;
- padding:22px;background:linear-gradient(145deg,#f8dce5,#fff8f1,#f4d4df);
- transition:opacity 1s,visibility 1s
+.heart {
+  bottom:-30px;
+  animation:heartRise linear forwards;
 }
-#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
-.intro-inner{text-align:center;width:min(340px,100%)}
-.smallcaps{font:10px Arial,sans-serif;letter-spacing:4px;color:#a96c7e}
-.envelope{
- font-size:86px;display:block;margin:22px 0;
- animation:envelope 2.5s ease-in-out infinite;
- filter:drop-shadow(0 12px 12px #b83d5d25)
+@keyframes heartRise {
+  0% { transform:translateY(0) scale(.6);opacity:0 }
+  15% { opacity:.8 }
+  100% { transform:translateY(-115vh) scale(1.2) rotate(25deg);opacity:0 }
 }
-@keyframes envelope{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}
-.intro-inner h1{font-size:36px;font-weight:normal;line-height:1.25;color:#a83c5c;margin:0}
-.intro-inner p{font-size:15px;line-height:1.9;color:#976a76;margin:18px 0 25px}
-button{transition:transform .2s,box-shadow .2s}
-button:active{transform:scale(.97)}
-.primary{
- border:0;border-radius:50px;padding:15px 24px;
- background:linear-gradient(120deg,#d76b87,#ad3458);
- color:white;box-shadow:0 8px 25px #b83d5d32
+.sparkle {
+  animation:twinkle 2s ease-in-out infinite;
 }
-main{
- position:relative;z-index:1;min-height:100vh;min-height:100dvh;
- display:grid;place-items:center;padding:30px 15px 88px
+@keyframes twinkle {
+  0%,100% { opacity:.15;transform:scale(.6) }
+  50% { opacity:1;transform:scale(1.4) }
 }
-.letter{
- width:min(430px,100%);position:relative;
- padding:34px 24px 28px;text-align:center;
- background:linear-gradient(135deg,#fffdf9f5,#fff8f1f5);
- border:1px solid #fff;
- box-shadow:0 18px 65px #9b4c5e18,0 2px 8px #9b4c5e0b;
- border-radius:3px 3px 16px 16px;
- opacity:0;transform:translateY(25px);
- transition:opacity 1.2s,transform 1.2s
+.haze {
+  position:fixed;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.32;
+  pointer-events:none;
 }
-.letter.show{opacity:1;transform:translateY(0)}
-.letter:before{
- content:"";position:absolute;inset:8px;
- border:1px solid #e8c5bf;pointer-events:none
+.haze.one { background:#f2a8c0;top:0;left:-100px }
+.haze.two { background:#e7c09b;bottom:0;right:-120px }
+
+#intro {
+  position:fixed;
+  inset:0;
+  z-index:10;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  text-align:center;
+  background:linear-gradient(145deg,#f8dce5,#fffaf3,#f2d6e1);
+  transition:opacity .9s,visibility .9s;
 }
-.toprose{font-size:47px;display:block;margin:0 0 8px;animation:sway 4s ease-in-out infinite}
-@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-.date{font:10px Arial,sans-serif;letter-spacing:4px;color:#a87979}
-h2{
- font-weight:normal;color:#a53657;font-size:clamp(34px,9vw,43px);
- line-height:1.16;margin:17px 0 5px
+#intro.hide { opacity:0;visibility:hidden;pointer-events:none }
+.intro-inner { max-width:350px }
+.envelope {
+  display:block;
+  font-size:86px;
+  margin:22px 0;
+  filter:drop-shadow(0 12px 14px #b83e6030);
+  animation:floatEnvelope 2.5s ease-in-out infinite;
 }
-h2 em{font-size:.66em;display:block;font-style:italic;color:#c47b8b;margin-top:7px}
-.rule{display:flex;align-items:center;gap:12px;margin:22px 0;color:#c57b8b}
-.rule:before,.rule:after{content:"";height:1px;flex:1;background:#e7c6bf}
-.rule span{font-size:21px}
-.salute{font-size:19px;color:#9e435c;line-height:1.55;margin-bottom:15px}
-.message{
- text-align:left;white-space:pre-line;font-size:16px;line-height:1.95;
- color:#76535a;min-height:205px
+@keyframes floatEnvelope {
+  0%,100% { transform:translateY(0) rotate(-3deg) }
+  50% { transform:translateY(-9px) rotate(3deg) }
 }
-.message .line{display:block;opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s}
-.message .line.visible{opacity:1;transform:translateY(0)}
-.signature{
- text-align:right;margin-top:16px;color:#b45772;
- font-size:19px;font-style:italic;opacity:0;transition:opacity 1.2s
+.eyebrow {
+  font:10px Arial,sans-serif;
+  letter-spacing:4px;
+  color:#a76e7d;
 }
-.signature.visible{opacity:1}
-.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
-.controls button{
- padding:11px 17px;border:1px solid #dfb4bb;border-radius:30px;
- background:#fffaf7;color:#9d4a62;font-size:13px
+.intro-inner h1 {
+  font-size:35px;
+  line-height:1.3;
+  font-weight:normal;
+  color:#a8395a;
+  margin:0;
 }
-.controls .primary{background:linear-gradient(120deg,#d76b87,#ad3458);color:white;border:0}
-.status{font:10px Arial,sans-serif;color:#ad7b84;margin-top:15px;min-height:14px}
-.footer{
- position:fixed;z-index:2;bottom:0;left:0;width:100%;
- padding:16px 10px calc(13px + env(safe-area-inset-bottom));
- text-align:center;font:9px Arial,sans-serif;letter-spacing:3px;color:#a77a82;
- background:linear-gradient(transparent,#fae8edaa)
+.intro-inner p {
+  color:#976c78;
+  font-size:15px;
+  line-height:1.9;
+  margin:17px 0 25px;
 }
-#finale{
- position:fixed;inset:0;z-index:8;display:grid;place-items:center;
- background:#fff3f1ed;backdrop-filter:blur(7px);padding:25px;
- opacity:0;visibility:hidden;transition:opacity .8s,visibility .8s
+.btn {
+  border:1px solid #e5b5c2;
+  border-radius:40px;
+  background:#fffaf8;
+  color:#a34561;
+  padding:13px 22px;
+  box-shadow:0 5px 16px #b83e6010;
 }
-#finale.show{opacity:1;visibility:visible}
-.finale-card{text-align:center;max-width:340px}
-.finale-card .bouquet{font-size:70px}
-.finale-card h3{font-size:32px;font-weight:normal;color:#a53657;line-height:1.3}
-.finale-card p{line-height:1.9;color:#875965}
-@media(max-width:370px){.letter{padding:28px 19px 24px}.message{font-size:15px}.controls button{padding:10px 13px}}
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+.btn.primary {
+  color:white;
+  border:0;
+  background:linear-gradient(120deg,#d97793,#ae3658);
+  box-shadow:0 8px 23px #b83e6030;
+}
+button:active { transform:scale(.97) }
+
+main {
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  padding:25px 15px 100px;
+}
+.letter {
+  position:relative;
+  width:min(430px,100%);
+  padding:32px 23px 28px;
+  text-align:center;
+  background:linear-gradient(145deg,#fffdf9f5,#fff8f1f5);
+  border:1px solid #fff;
+  border-radius:4px 4px 16px 16px;
+  box-shadow:0 18px 60px #9b4c5e18;
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity 1.2s,transform 1.2s;
+}
+.letter.show { opacity:1;transform:translateY(0) }
+.letter:before {
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid #e8c7bf;
+  pointer-events:none;
+}
+.rose {
+  font-size:48px;
+  display:block;
+  animation:roseSway 4s ease-in-out infinite;
+}
+@keyframes roseSway {
+  0%,100% { transform:rotate(-5deg) }
+  50% { transform:rotate(5deg) }
+}
+.date {
+  margin-top:8px;
+  color:#aa7d80;
+  font:10px Arial,sans-serif;
+  letter-spacing:3px;
+}
+h2 {
+  color:#a53657;
+  font-size:clamp(33px,9vw,43px);
+  font-weight:normal;
+  line-height:1.17;
+  margin:16px 0 0;
+}
+h2 em {
+  display:block;
+  color:#c57b8d;
+  font-size:.64em;
+  margin-top:7px;
+}
+.divider {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#c57b8d;
+  margin:22px 0;
+}
+.divider:before,.divider:after {
+  content:"";
+  height:1px;
+  flex:1;
+  background:#e7c6bf;
+}
+.divider span { font-size:21px }
+.salute {
+  font-size:19px;
+  color:#9e435c;
+  line-height:1.55;
+  margin-bottom:15px;
+}
+.message {
+  text-align:left;
+  color:#76535a;
+  font-size:15.5px;
+  line-height:1.95;
+}
+.line {
+  display:block;
+  margin-bottom:12px;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .9s,transform .9s;
+}
+.line.visible { opacity:1;transform:translateY(0) }
+.signature {
+  text-align:right;
+  color:#b45772;
+  font-size:18px;
+  font-style:italic;
+  opacity:0;
+  transition:opacity 1s;
+  margin-top:18px;
+}
+.signature.visible { opacity:1 }
+.bottom-note {
+  margin-top:21px;
+  font-size:12px;
+  line-height:1.8;
+  color:#b28b8c;
+}
+#musicButton {
+  position:fixed;
+  z-index:20;
+  right:16px;
+  bottom:calc(18px + env(safe-area-inset-bottom));
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-height:47px;
+  padding:0 17px;
+  border:1px solid #ffffffd9;
+  border-radius:30px;
+  color:#fff;
+  background:linear-gradient(125deg,#c95c7d,#a83257);
+  box-shadow:0 7px 24px #8c2f4a35;
+  font:13px Arial,sans-serif;
+}
+#musicIcon {
+  display:inline-grid;
+  place-items:center;
+  width:23px;
+  height:23px;
+  border:1px solid #ffffff70;
+  border-radius:50%;
+}
+#musicButton.playing #musicIcon {
+  animation:musicPulse 1.4s ease-in-out infinite;
+}
+@keyframes musicPulse {
+  50% { box-shadow:0 0 0 6px #ffffff25 }
+}
+#status {
+  position:fixed;
+  z-index:19;
+  bottom:calc(73px + env(safe-area-inset-bottom));
+  right:16px;
+  max-width:210px;
+  padding:7px 11px;
+  border-radius:12px;
+  background:#fffaf1e8;
+  color:#966878;
+  font:10px Arial,sans-serif;
+  box-shadow:0 3px 14px #8c2f4a10;
+}
+#musicButton.playing + #status { color:#9b4964 }
+.footer {
+  position:relative;
+  z-index:1;
+  padding:0 15px 24px;
+  text-align:center;
+  color:#b1848d;
+  font:9px Arial,sans-serif;
+  letter-spacing:2px;
+}
+@media(max-width:370px) {
+  .letter { padding:27px 18px }
+  .message { font-size:15px }
+  .intro-inner h1 { font-size:31px }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after { animation:none!important;transition:none!important }
 }
 </style>
 </head>
 <body>
-<div class="ambient a"></div><div class="ambient b"></div>
-<div id="sky"></div>
+<div class="haze one"></div>
+<div class="haze two"></div>
+<div id="scene"></div>
 
 <section id="intro">
- <div class="intro-inner">
-  <div class="smallcaps">A LITTLE NOTE FOR YOU</div>
-  <span class="envelope">💌</span>
-  <h1>Có một điều<br>mình muốn gửi bạn...</h1>
-  <p>Không phải món quà gì lớn lao,<br>chỉ là vài lời chúc thật lòng<br>nhân ngày đặc biệt này. 🌷</p>
-  <button class="primary" id="open">Mở lá thư nhé ♡</button>
- </div>
+  <div class="intro-inner">
+    <div class="eyebrow">MỘT LỜI CHÚC NHỎ</div>
+    <span class="envelope">💌</span>
+    <h1>Gửi bạn,<br>người phụ nữ tuyệt vời</h1>
+    <p>
+      Có những điều giản dị thôi,<br>
+      nhưng mình vẫn muốn nói thành lời.<br>
+      Nhất là trong một ngày thật đẹp như hôm nay. 🌷
+    </p>
+    <button class="btn primary" id="openButton">Mở thiệp nhé ♡</button>
+  </div>
 </section>
 
 <main>
- <article class="letter" id="letter">
-  <span class="toprose">🌹</span>
-  <div class="date">20 · 10 &nbsp; / &nbsp; MỘT NGÀY THẬT ĐẸP</div>
-  <h2>Gửi những người<em>phụ nữ tuyệt vời ♡</em></h2>
-  <div class="rule"><span>❦</span></div>
-  <div class="salute">Chúc bạn một ngày thật dịu dàng.</div>
+  <article class="letter" id="letter">
+    <span class="rose">🌹</span>
+    <div class="date">20 THÁNG 10 · NGÀY CỦA BẠN</div>
+    <h2>Chúc mừng<em>Ngày Phụ nữ Việt Nam ♡</em></h2>
 
-  <div class="message" id="message">
-   <span class="line">Mong bạn lúc nào cũng xinh đẹp theo cách riêng của mình, cười thật nhiều và luôn có người thương yêu, trân trọng bạn.</span>
-   <span class="line">Mong những ngày mệt mỏi sẽ có người hỏi han, những lúc buồn sẽ có một bờ vai để dựa vào, còn những ước mơ trong lòng thì từng chút một đều thành sự thật.</span>
-   <span class="line">Bạn không cần phải hoàn hảo để xứng đáng với những điều tốt đẹp. Chỉ cần là chính mình thôi, bạn đã rất đáng quý rồi.</span>
-   <span class="line">Chúc bạn không chỉ vui vào ngày 20/10, mà cả những ngày bình thường cũng có hoa, có quà, có tiếng cười và thật nhiều yêu thương. ❤️</span>
-  </div>
+    <div class="divider"><span>❦</span></div>
+    <div class="salute">Gửi tất cả những người phụ nữ tuyệt vời 💗</div>
 
-  <div class="signature" id="signature">Thương chúc bạn, thật nhiều điều tốt đẹp. 🌷</div>
-  <div class="controls">
-   <button class="primary" id="read">Đọc lại lời chúc ✨</button>
-   <button id="music">♫ Bật nhạc</button>
-   <button id="more">Một điều nữa ♡</button>
-  </div>
-  <div class="status" id="status">Một lá thư nhỏ, gửi bằng tất cả sự chân thành.</div>
- </article>
+    <div class="message" id="message">
+      <span class="line">Chúc bạn luôn xinh đẹp, vui vẻ và có thật nhiều lý do để mỉm cười. Mong rằng dù cuộc sống có bận rộn đến đâu, bạn vẫn luôn dành cho mình những phút giây bình yên.</span>
+      <span class="line">Mong những cố gắng của bạn được nhìn thấy, những yêu thương bạn trao đi sẽ quay trở lại, và những ngày không vui rồi cũng sẽ qua nhẹ nhàng.</span>
+      <span class="line">Bạn không cần lúc nào cũng mạnh mẽ, cũng chẳng cần phải hoàn hảo. Hãy cứ là chính mình, chăm sóc bản thân và đón nhận những điều tốt đẹp mà bạn xứng đáng có được.</span>
+      <span class="line">Chúc bạn ngày 20/10 thật nhiều hoa, thật nhiều niềm vui. Và hơn hết, chúc bạn được yêu thương không chỉ hôm nay, mà cả những ngày rất đỗi bình thường sau này nữa. ❤️</span>
+    </div>
+
+    <div class="signature" id="signature">
+      Thân gửi những điều tốt đẹp nhất đến bạn. 🌷
+    </div>
+
+    <div class="bottom-note">
+      Một chút hoa, một chút nhạc,<br>
+      và một lời chúc gửi bằng sự chân thành.
+    </div>
+  </article>
 </main>
 
-<div class="footer">MONG BẠN LUÔN ĐƯỢC YÊU THƯƠNG · 20/10</div>
+<div class="footer">MONG BẠN LUÔN HẠNH PHÚC · 20/10</div>
 
-<section id="finale">
- <div class="finale-card">
-  <div class="bouquet">💐</div>
-  <h3>Và đừng quên nhé...</h3>
-  <p>Giữa bao nhiêu bộn bề, hãy nhớ dành một chút dịu dàng cho chính mình nữa. Bạn cũng xứng đáng được yêu thương thật nhiều. ❤️</p>
-  <button class="primary" id="closeFinale">Ôm một cái nè ♡</button>
- </div>
-</section>
+<button id="musicButton" aria-label="Bật hoặc tắt nhạc">
+  <span id="musicIcon">♫</span>
+  <span id="musicLabel">Bật nhạc</span>
+</button>
+<div id="status">Một giai điệu dịu dàng đang chờ ♡</div>
 
-<!-- Tải bản nhạc từ Pixabay, đặt cạnh index.html và đổi tên thành music.mp3 -->
-<audio id="song" src="music.mp3" loop preload="auto"></audio>
+<!-- Âm thanh trực tiếp từ Wikimedia Commons -->
+<audio
+  id="music"
+  preload="none"
+  loop
+  playsinline
+  crossorigin="anonymous"
+>
+  <source
+    src="https://upload.wikimedia.org/wikipedia/commons/5/57/Romance_-_Rachmaninoff.ogg"
+    type="audio/ogg"
+  >
+</audio>
 
 <script>
+"use strict";
+
 const $ = id => document.getElementById(id);
-const sky = $("sky");
-const audio = $("song");
-let opened = false;
-let musicOn = false;
-let petalTimer, heartTimer;
+const scene = $("scene");
+const audio = $("music");
+const musicButton = $("musicButton");
+const musicLabel = $("musicLabel");
+const status = $("status");
 
-function particle(type){
- const el = document.createElement("span");
- el.className = type;
- const flowers = ["🌸","🌷","🌹","❀","✿","🍃"];
- const hearts = ["♡","♥","💕","💗","✨"];
- el.textContent = type === "petal"
-   ? flowers[Math.floor(Math.random()*flowers.length)]
-   : hearts[Math.floor(Math.random()*hearts.length)];
- el.style.left = Math.random()*100+"%";
- el.style.fontSize = (12+Math.random()*18)+"px";
- el.style.setProperty("--sway",(Math.random()*140-70)+"px");
- el.style.animationDuration = (type==="petal"?7:7+Math.random()*6)+"s";
- sky.appendChild(el);
- setTimeout(()=>el.remove(),15000);
+let isPlaying = false;
+let hasOpened = false;
+let effectsStarted = false;
+
+function makeParticle(type) {
+  const el = document.createElement("span");
+  el.className = type;
+
+  const flowers = ["🌸","🌷","🌹","❀","✿","🍃"];
+  const hearts = ["♡","♥","💕","💗","✨"];
+
+  el.textContent = type === "petal"
+    ? flowers[Math.floor(Math.random()*flowers.length)]
+    : hearts[Math.floor(Math.random()*hearts.length)];
+
+  el.style.left = Math.random()*100 + "%";
+  el.style.fontSize = (12+Math.random()*18) + "px";
+  el.style.setProperty("--drift",(Math.random()*140-70)+"px");
+  el.style.animationDuration =
+    (type==="petal" ? 7+Math.random()*4 : 7+Math.random()*5)+"s";
+
+  scene.appendChild(el);
+  setTimeout(() => el.remove(),15000);
 }
 
-function sparkle(){
- const el=document.createElement("span");
- el.className="spark";
- el.textContent="✦";
- el.style.left=Math.random()*100+"%";
- el.style.top=Math.random()*100+"%";
- el.style.color=["#d9a35d","#e58ca6","#fff"][Math.floor(Math.random()*3)];
- el.style.fontSize=(8+Math.random()*9)+"px";
- sky.appendChild(el);
- setTimeout(()=>el.remove(),5000);
+function makeSparkle() {
+  const el = document.createElement("span");
+  el.className = "sparkle";
+  el.textContent = "✦";
+  el.style.left = Math.random()*100 + "%";
+  el.style.top = Math.random()*100 + "%";
+  el.style.fontSize = (8+Math.random()*10)+"px";
+  el.style.color = ["#d9a35d","#e58ca6","#ffffff"][
+    Math.floor(Math.random()*3)
+  ];
+
+  scene.appendChild(el);
+  setTimeout(() => el.remove(),5000);
 }
 
-function startEffects(){
- if(!petalTimer){
-  for(let i=0;i<20;i++)setTimeout(()=>particle("petal"),i*130);
-  petalTimer=setInterval(()=>particle("petal"),430);
-  heartTimer=setInterval(()=>particle("heart"),950);
-  setInterval(sparkle,650);
- }
+function startEffects() {
+  if (effectsStarted) return;
+  effectsStarted = true;
+
+  for (let i=0;i<22;i++) {
+    setTimeout(() => makeParticle("petal"),i*130);
+  }
+
+  setInterval(() => makeParticle("petal"),450);
+  setInterval(() => makeParticle("heart"),1000);
+  setInterval(makeSparkle,700);
 }
 
-function reveal(){
- const lines=document.querySelectorAll(".line");
- lines.forEach(line=>line.classList.remove("visible"));
- $("signature").classList.remove("visible");
- lines.forEach((line,i)=>setTimeout(()=>line.classList.add("visible"),350+i*1550));
- setTimeout(()=>$("signature").classList.add("visible"),350+lines.length*1550);
+function revealLetter() {
+  const lines = document.querySelectorAll(".line");
+  const signature = $("signature");
+
+  lines.forEach(line => line.classList.remove("visible"));
+  signature.classList.remove("visible");
+
+  lines.forEach((line,index) => {
+    setTimeout(() => line.classList.add("visible"),300+index*1150);
+  });
+
+  setTimeout(() => signature.classList.add("visible"),
+    300+lines.length*1150);
 }
 
-async function playMusic(){
- try{
-  audio.volume=0;
-  await audio.play();
-  musicOn=true;
-  const fade=setInterval(()=>{
-   if(!musicOn){clearInterval(fade);return}
-   audio.volume=Math.min(.65,audio.volume+.05);
-   if(audio.volume>=.65)clearInterval(fade);
-  },120);
-  $("music").textContent="Ⅱ Tắt nhạc";
-  $("status").textContent="♪ Đang phát nhạc nền ♡";
- }catch(e){
-  musicOn=false;
-  $("status").textContent="Hãy chạm “Bật nhạc” để nghe giai điệu nhé.";
-  $("music").textContent="♫ Bật nhạc";
- }
+function updateMusicUI() {
+  musicButton.classList.toggle("playing",isPlaying);
+  musicLabel.textContent = isPlaying ? "Tắt nhạc" : "Bật nhạc";
+  $("musicIcon").textContent = isPlaying ? "Ⅱ" : "♫";
 }
 
-$("open").addEventListener("click",async()=>{
- if(opened)return;
- opened=true;
- $("intro").classList.add("hide");
- $("letter").classList.add("show");
- startEffects();
- reveal();
- // Trình duyệt cho phép thử phát vì người dùng vừa chạm nút.
- await playMusic();
-});
+async function startMusic() {
+  status.textContent = "Đang kết nối nhạc…";
 
-$("read").addEventListener("click",()=>{
- reveal();
- for(let i=0;i<14;i++)setTimeout(()=>particle("heart"),i*100);
-});
+  try {
+    audio.volume = 0.55;
+    await audio.play();
+    isPlaying = true;
+    updateMusicUI();
+    status.textContent = "♪ Đang phát Romance ♡";
+  } catch (error) {
+    isPlaying = false;
+    updateMusicUI();
+    status.textContent =
+      "Chưa phát được? Chạm nút Bật nhạc lần nữa nhé.";
+  }
+}
 
-$("music").addEventListener("click",async()=>{
- if(musicOn){
-  musicOn=false;
+function stopMusic() {
   audio.pause();
-  $("music").textContent="♫ Bật nhạc";
-  $("status").textContent="Nhạc đã tắt. Khi nào muốn, mình nghe tiếp nhé.";
- }else{
-  await playMusic();
- }
+  isPlaying = false;
+  updateMusicUI();
+  status.textContent = "Nhạc đang tạm dừng ♡";
+}
+
+$("openButton").addEventListener("click",async () => {
+  if (hasOpened) return;
+  hasOpened = true;
+
+  $("intro").classList.add("hide");
+  $("letter").classList.add("show");
+
+  startEffects();
+  revealLetter();
+
+  // Thử phát sau thao tác chạm của người dùng.
+  await startMusic();
 });
 
-$("more").addEventListener("click",()=>{
- $("finale").classList.add("show");
- for(let i=0;i<20;i++)setTimeout(()=>particle("heart"),i*80);
+musicButton.addEventListener("click",async () => {
+  if (isPlaying) {
+    stopMusic();
+  } else {
+    await startMusic();
+  }
 });
 
-$("closeFinale").addEventListener("click",()=>{
- $("finale").classList.remove("show");
+audio.addEventListener("playing",() => {
+  isPlaying = true;
+  updateMusicUI();
+  status.textContent = "♪ Đang phát nhạc ♡";
+});
+
+audio.addEventListener("pause",() => {
+  isPlaying = false;
+  updateMusicUI();
+});
+
+audio.addEventListener("error",() => {
+  isPlaying = false;
+  updateMusicUI();
+  status.textContent =
+    "Nguồn nhạc không tải được. Hãy thử lại khi mạng ổn định.";
 });
 </script>
 </body>
