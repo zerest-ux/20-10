@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#160d18">
-<title>Gửi những đóa hoa tuyệt vời — 20/10</title>
+<meta name="description" content="Một tấm thiệp 20/10 với bó hoa hồng, ánh sáng chuyển cảnh và lời chúc dành cho tất cả phụ nữ.">
+<title>20/10 — Một chút dịu dàng gửi đến bạn</title>
 <style>
   :root {
     --night: #160d20;
@@ -149,6 +150,49 @@
   @media (prefers-reduced-motion: reduce) {
     *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
   }
+
+  /* Bản nâng cấp: chuyển cảnh mềm, ánh sáng thở và bó hoa chuyển động nhẹ */
+  .stage::before {
+    content:""; position:absolute; inset:-30%; pointer-events:none; z-index:0;
+    background:conic-gradient(from 0deg at 50% 50%, transparent 0 25%, rgba(255,220,185,.10) 34%, transparent 44% 70%, rgba(255,164,201,.08) 82%, transparent 92%);
+    opacity:0; transform:rotate(-18deg) scale(.8);
+    transition:opacity 2.5s ease, transform 5s ease;
+  }
+  .stage.day::before { opacity:1; transform:rotate(22deg) scale(1.12); }
+  .glow { animation: glowBreath 7s ease-in-out infinite alternate; }
+  @keyframes glowBreath {
+    from { filter:blur(3px); box-shadow:0 0 70px 28px rgba(255,190,148,.12); }
+    to { filter:blur(10px); box-shadow:0 0 115px 48px rgba(255,190,148,.25); }
+  }
+  .bouquet-wrap.show { animation: bouquetFloat 5s ease-in-out 1.5s infinite; }
+  @keyframes bouquetFloat {
+    0%,100% { translate:0 0; }
+    50% { translate:0 -8px; }
+  }
+  .flower .petal { animation: petalGlow 4.2s ease-in-out infinite alternate; }
+  .flower:nth-child(odd) .petal { animation-delay:-1.8s; }
+  @keyframes petalGlow {
+    from { filter:brightness(.96); }
+    to { filter:brightness(1.12) saturate(1.08); }
+  }
+  .seal { position:relative; }
+  .seal::after {
+    content:""; position:absolute; inset:-9px; border:1px solid rgba(255,207,222,.28);
+    border-radius:50%; animation:sealRing 3s ease-out infinite;
+  }
+  @keyframes sealRing { 0% { transform:scale(.88); opacity:.8; } 100% { transform:scale(1.45); opacity:0; } }
+  .headline .line { text-shadow:0 0 0 transparent; }
+  .headline .line.bold { text-shadow:0 0 24px rgba(255,139,178,.18); }
+  .day .headline .line.bold { text-shadow:0 2px 24px rgba(179,57,101,.13); }
+  .scene-dots { position:relative; z-index:2; }
+  .restart { transition:opacity .25s ease, transform .25s ease; }
+  .restart:hover { opacity:1; transform:translateY(-2px); }
+  @media (max-width:390px) {
+    .bouquet-wrap { height:250px; width:min(90vw,320px); }
+    .flower { scale:.88; }
+    .eyebrow { letter-spacing:.2em; font-size:.67rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -176,7 +220,7 @@
         <div class="ribbon"></div>
       </div>
     </div>
-    <p class="small-note" id="note">Mong bạn luôn được dịu dàng với chính mình, được yêu thương đúng cách và gặp thật nhiều điều đẹp đẽ trên hành trình của mình.</p>
+    <p class="small-note" id="note">Mong bạn luôn được dịu dàng với chính mình, được yêu thương đúng cách, tự tin tỏa sáng và gặp thật nhiều điều đẹp đẽ trên hành trình của mình.</p>
     <div class="signature" id="signature">BẠN XỨNG ĐÁNG VỚI NHỮNG ĐIỀU TỐT ĐẸP NHẤT ♡</div>
     <div class="scene-dots" id="sceneDots" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
     <button class="restart" id="replay" type="button">Xem lại từ đầu</button>
@@ -273,6 +317,10 @@
       setScene(0);
       later(() => stage.classList.add('day'), 2200);
     }, 15500);
+    // Tự chuyển lại từ đầu sau khi cảnh cuối đã kịp hiện; không cần bấm nút.
+    later(() => {
+      if (started) playSequence();
+    }, 20500);
   }
   function makeDecorations() {
     const stars = document.getElementById('stars');
