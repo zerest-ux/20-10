@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f5">
+<title>Happy 20/10 - For You ❤️</title>
+
+<style>
+:root {
+  --pink: #ff4f87;
+  --rose: #d92762;
+  --light: #fff0f5;
+  --gold: #e7b96d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #923552;
+  background:
+    radial-gradient(ellipse at 50% 0%, #ffffff 0%, transparent 48%),
+    linear-gradient(145deg, #ffe9f0, #fff7fa 50%, #ffdce8);
+}
+
+button {
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  bottom: -45px;
+  opacity: 0;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 2px 5px #ff729533);
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0);
+    opacity: 0;
+  }
+  12% { opacity: .85; }
+  85% { opacity: .7; }
+  100% {
+    transform: translate3d(var(--drift), -115vh, 0)
+      rotate(var(--rotation));
+    opacity: 0;
+  }
+}
+
+.glow {
+  position: fixed;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: #ff8bb433;
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow.one { top: 5%; left: -100px; }
+.glow.two { right: -100px; bottom: 5%; }
+
+main {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 17px 85px;
+}
+
+.card {
+  width: 100%;
+  max-width: 430px;
+  text-align: center;
+  position: relative;
+  padding: 31px 22px 28px;
+  border: 1px solid #ffffffd9;
+  border-radius: 28px;
+  background: linear-gradient(
+    155deg,
+    #ffffffdf,
+    #fff4f8e8 65%,
+    #ffeaf2f2
+  );
+  box-shadow:
+    0 20px 65px #d84a7620,
+    inset 0 0 25px #ffffffa8;
+  backdrop-filter: blur(12px);
+  animation: cardIn 1.2s ease both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(25px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #bc6b83;
+  text-transform: uppercase;
+}
+
+.flower {
+  margin: 17px auto 9px;
+  font-size: 66px;
+  line-height: 1.3;
+  display: block;
+  filter: drop-shadow(0 5px 8px #ff6e9729);
+  animation: flowerPulse 3s ease-in-out infinite;
+}
+
+@keyframes flowerPulse {
+  0%, 100% { transform: scale(1) rotate(-3deg); }
+  50% { transform: scale(1.07) rotate(3deg); }
+}
+
+h1 {
+  color: var(--rose);
+  font-size: clamp(35px, 10vw, 48px);
+  line-height: 1.12;
+  font-weight: normal;
+  text-shadow: 0 3px 20px #ff8daf35;
+}
+
+h1 span {
+  display: block;
+  color: #ec6d91;
+  font-size: .65em;
+  letter-spacing: 5px;
+  margin-top: 7px;
+}
+
+.date {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 7px 17px;
+  border: 1px solid #edb5c7;
+  border-radius: 30px;
+  color: #bc5877;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: #e78da8;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, #e8a5ba);
+}
+
+.divider::after {
+  background: linear-gradient(90deg, #e8a5ba, transparent);
+}
+
+.divider span { font-size: 19px; }
+
+.greeting {
+  font-size: 20px;
+  color: #b94066;
+  margin-bottom: 15px;
+}
+
+.message {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #89505f;
+  min-height: 122px;
+  white-space: pre-line;
+}
+
+.message.reveal {
+  animation: textGlow 2s ease both;
+}
+
+@keyframes textGlow {
+  0% { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.signature {
+  margin-top: 18px;
+  color: #d75e84;
+  font-size: 18px;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.signature.show { opacity: 1; }
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 27px;
+}
+
+.btn {
+  min-height: 49px;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 30px;
+  border: 1px solid #eaa2b9;
+  background: #fff8fb;
+  color: #bb456b;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn:active { transform: scale(.97); }
+
+.btn.primary {
+  color: white;
+  border: none;
+  background: linear-gradient(120deg, #f37a9d, #d93f72);
+  box-shadow: 0 8px 22px #e45a873d;
+}
+
+.btn:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+.music-status {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #b7788c;
+  margin-top: 14px;
+  min-height: 16px;
+}
+
+.footer {
+  position: fixed;
+  z-index: 3;
+  bottom: 13px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #bf7a90;
+  font-size: 11px;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+#opening {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background: linear-gradient(145deg, #ffe5ee, #fff9fb, #ffdce9);
+  transition: opacity .9s ease, visibility .9s ease;
+}
+
+#opening.closed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.open-content {
+  max-width: 360px;
+  animation: cardIn 1s ease both;
+}
+
+.envelope {
+  font-size: 90px;
+  display: block;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 10px 16px #d84a7630);
+  animation: envelopePulse 2s infinite;
+}
+
+@keyframes envelopePulse {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-9px) rotate(2deg); }
+}
+
+.open-content h2 {
+  font-size: 31px;
+  color: #c93466;
+  font-weight: normal;
+  line-height: 1.35;
+}
+
+.open-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #a56579;
+  margin: 15px 0 25px;
+}
+
+.open-btn {
+  width: auto;
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
+@media (max-width: 360px) {
+  .card { padding: 25px 17px; }
+  .message { font-size: 15px; }
+  .flower { font-size: 55px; }
+}
+</style>
+</head>
+
+<body>
+<div class="glow one"></div>
+<div class="glow two"></div>
+<div id="particles"></div>
+
+<!-- Màn hình mở thiệp -->
+<section id="opening">
+  <div class="open-content">
+    <span class="envelope">💌</span>
+    <h2>Một món quà nhỏ<br>dành tặng bạn</h2>
+    <p>
+      Gửi đến những người phụ nữ tuyệt vời,<br>
+      một chút ngọt ngào trong ngày đặc biệt. 🌷
+    </p>
+    <button class="btn primary open-btn" id="openBtn">
+      💗 Mở thiệp yêu thương
+    </button>
+  </div>
+</section>
+
+<main>
+  <article class="card">
+    <div class="eyebrow">A little gift for you</div>
+
+    <span class="flower">🌹</span>
+
+    <h1>
+      Happy
+      <span>20 · 10</span>
+    </h1>
+
+    <div class="date">NGÀY PHỤ NỮ VIỆT NAM</div>
+
+    <div class="divider"><span>♡</span></div>
+
+    <div class="greeting">Gửi những người phụ nữ tuyệt vời 💕</div>
+
+    <p class="message" id="message">
+      Chúc em luôn xinh đẹp, hạnh phúc và được yêu thương thật nhiều.
+      Mong mọi điều dịu dàng nhất sẽ đến với em, không chỉ ngày 20/10 mà là mỗi ngày trong cuộc đời. ❤️
+    </p>
+
+    <div class="signature" id="signature">
+      With love, always. 💗
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="wishBtn">
+        ✨ Nhận lời chúc yêu thương
+      </button>
+      <button class="btn" id="musicBtn">
+        🎵 Bật nhạc tình yêu
+      </button>
+    </div>
+
+    <div class="music-status" id="musicStatus">
+      Một giai điệu dịu dàng đang chờ bạn ♡
+    </div>
+  </article>
+</main>
+
+<div class="footer">MADE WITH ♡ FOR YOU · 20/10</div>
+
+<script>
+"use strict";
+
+// ==========================================
+// 1. HIỆU ỨNG HOA, TIM VÀ CÁNH HOA BAY
+// ==========================================
+const particleBox = document.getElementById("particles");
+
+const symbols = [
+  "💕", "💗", "💖", "♡", "🌸", "🌹", "🌷", "✨", "💮"
+];
+
+let particleTimer = null;
+
+function createParticle() {
+  const el = document.createElement("span");
+  el.className = "particle";
+  el.textContent = symbols[
+    Math.floor(Math.random() * symbols.length)
+  ];
+
+  const size = 12 + Math.random() * 19;
+  const duration = 7 + Math.random() * 8;
+
+  el.style.left = Math.random() * 100 + "%";
+  el.style.fontSize = size + "px";
+  el.style.animationDuration = duration + "s";
+  el.style.setProperty(
+    "--drift",
+    (Math.random() * 150 - 75) + "px"
+  );
+  el.style.setProperty(
+    "--rotation",
+    (Math.random() * 240 - 120) + "deg"
+  );
+
+  particleBox.appendChild(el);
+
+  setTimeout(() => el.remove(), duration * 1000);
+}
+
+function startParticles() {
+  if (particleTimer) return;
+
+  for (let i = 0; i < 16; i++) {
+    setTimeout(createParticle, i * 180);
+  }
+
+  particleTimer = setInterval(createParticle, 430);
+}
+
+// ==========================================
+// 2. MỞ THIỆP VÀ HIỆU ỨNG LỜI CHÚC
+// ==========================================
+const opening = document.getElementById("opening");
+const openBtn = document.getElementById("openBtn");
+const wishBtn = document.getElementById("wishBtn");
+const message = document.getElementById("message");
+const signature = document.getElementById("signature");
+const musicBtn = document.getElementById("musicBtn");
+const musicStatus = document.getElementById("musicStatus");
+
+const wishText =
+  "Chúc em luôn xinh đẹp, hạnh phúc và được yêu thương thật nhiều. " +
+  "Mong mọi điều dịu dàng nhất sẽ đến với em, không chỉ ngày 20/10 " +
+  "mà là mỗi ngày trong cuộc đời. ❤️";
+
+let opened = false;
+
+function revealWish() {
+  message.classList.remove("reveal");
+
+  // Khởi động lại hiệu ứng chữ.
+  void message.offsetWidth;
+
+  message.textContent = wishText;
+  message.classList.add("reveal");
+  signature.classList.add("show");
+
+  for (let i = 0; i < 12; i++) {
+    setTimeout(createParticle, i * 100);
+  }
+}
+
+openBtn.addEventListener("click", async () => {
+  if (opened) return;
+  opened = true;
+
+  opening.classList.add("closed");
+  startParticles();
+  revealWish();
+
+  // Âm thanh chỉ bắt đầu sau thao tác chủ động của người dùng.
+  await toggleMusic(true);
+});
+
+wishBtn.addEventListener("click", () => {
+  revealWish();
+});
+
+// ==========================================
+// 3. NHẠC TÌNH YÊU TỰ TẠO BẰNG WEB AUDIO
+// Không tải bài hát hoặc âm thanh có bản quyền.
+// Tạo giai điệu piano điện tử nhẹ nhàng.
+// ==========================================
+let audioContext = null;
+let masterGain = null;
+let musicTimer = null;
+let musicOn = false;
+let nextNoteTime = 0;
+let noteIndex = 0;
+
+const tempo = 0.43;
+
+// Các nốt của giai điệu.
+const melody = [
+  [69, 0.8], [72, 0.7], [76, 1.0], [72, 0.7],
+  [74, 0.8], [77, 0.7], [81, 1.0], [77, 0.7],
+  [72, 0.8], [76, 0.7], [79, 1.0], [76, 0.7],
+  [71, 0.8], [74, 0.7], [79, 1.0], [74, 0.7],
+  [69, 0.8], [72, 0.7], [76, 1.0], [72, 0.7],
+  [67, 0.8], [71, 0.7], [74, 1.0], [71, 0.7]
+];
+
+// Hợp âm nền tạo cảm giác êm dịu.
+const chords = [
+  [45, 52, 57, 60],
+  [41, 48, 53, 57],
+  [38, 45, 50, 53],
+  [43, 50, 55, 59]
+];
+
+function midiToHz(note) {
+  return 440 * Math.pow(2, (note - 69) / 12);
+}
+
+function playSoftNote(frequency, start, duration, volume) {
+  if (!audioContext || !masterGain) return;
+
+  const osc = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+  const filter = audioContext.createBiquadFilter();
+
+  // Sóng tam giác tạo âm thanh tròn, mềm hơn.
+  osc.type = "triangle";
+  osc.frequency.setValueAtTime(frequency, start);
+
+  filter.type = "lowpass";
+  filter.frequency.setValueAtTime(1800, start);
+  filter.Q.value = 0.5;
+
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.exponentialRampToValueAtTime(
+    Math.max(volume, 0.0002),
+    start + 0.025
+  );
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001,
+    start + duration
+  );
+
+  osc.connect(filter);
+  filter.connect(gain);
+  gain.connect(masterGain);
+
+  osc.start(start);
+  osc.stop(start + duration + 0.04);
+}
+
+function scheduleMusic() {
+  if (!audioContext || !musicOn) return;
+
+  // Lên lịch trước để giai điệu không bị ngắt quãng.
+  while (nextNoteTime < audioContext.currentTime + 0.7) {
+    const [note, length] = melody[noteIndex % melody.length];
+    const duration = tempo * length;
+
+    playSoftNote(
+      midiToHz(note),
+      nextNoteTime,
+      duration * 1.35,
+      0.11
+    );
+
+    // Đệm hợp âm nhẹ sau mỗi 4 nốt giai điệu.
+    if (noteIndex % 4 === 0) {
+      const chord = chords[
+        Math.floor(noteIndex / 4) % chords.length
+      ];
+
+      chord.forEach((chordNote, i) => {
+        playSoftNote(
+          midiToHz(chordNote),
+          nextNoteTime + i * 0.035,
+          tempo * 3.4,
+          0.025
+        );
+      });
+    }
+
+    nextNoteTime += duration;
+    noteIndex++;
+  }
+}
+
+async function toggleMusic(forceOn = false) {
+  try {
+    if (musicOn && !forceOn) {
+      musicOn = false;
+
+      if (musicTimer) {
+        clearInterval(musicTimer);
+        musicTimer = null;
+      }
+
+      if (masterGain && audioContext) {
+        masterGain.gain.cancelScheduledValues(
+          audioContext.currentTime
+        );
+        masterGain.gain.setTargetAtTime(
+          0.0001,
+          audioContext.currentTime,
+          0.06
+        );
+      }
+
+      musicBtn.textContent = "🎵 Bật nhạc tình yêu";
+      musicStatus.textContent = "Nhạc đã tắt ♡";
+      return;
+    }
+
+    if (musicOn) return;
+
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) {
+      musicStatus.textContent =
+        "Trình duyệt không hỗ trợ Web Audio.";
+      return;
+    }
+
+    if (!audioContext) {
+      audioContext = new AudioContextClass();
+      masterGain = audioContext.createGain();
+      masterGain.gain.value = 0.0001;
+      masterGain.connect(audioContext.destination);
+    }
+
+    await audioContext.resume();
+
+    masterGain.gain.cancelScheduledValues(
+      audioContext.currentTime
+    );
+    masterGain.gain.setTargetAtTime(
+      0.65,
+      audioContext.currentTime,
+      0.3
+    );
+
+    musicOn = true;
+    nextNoteTime = audioContext.currentTime + 0.08;
+
+    musicBtn.textContent = "🔇 Tắt nhạc tình yêu";
+    musicStatus.textContent =
+      "♪ Đang phát giai điệu tình yêu tự tạo ♡";
+
+    scheduleMusic();
+
+    if (musicTimer) clearInterval(musicTimer);
+    musicTimer = setInterval(scheduleMusic, 180);
+
+  } catch (error) {
+    musicOn = false;
+    musicStatus.textContent =
+      "Không phát được nhạc. Hãy thử chạm bật nhạc lại.";
+    musicBtn.textContent = "🎵 Bật nhạc tình yêu";
+  }
+}
+
+musicBtn.addEventListener("click", () => {
+  toggleMusic();
+});
+
+// Tôn trọng cài đặt giảm chuyển động của thiết bị.
+if (window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.style.scrollBehavior = "auto";
+}
+</script>
+</body>
+</html>
